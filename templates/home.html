@@ -1,0 +1,27 @@
+{% extends "_base.html" %}
+
+{% block body %}
+
+안녕하세요 현재
+{{request.user}}님이 로그인하셨습니다.
+<input type="submit" id="logoutButton" class="btn btn-danger" value="logout">
+
+
+
+<script
+src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+
+<script>
+        $(document).ready(function(){
+        $('#logoutButton').click(function(){
+        //get형식으로 전송
+            $.get('/apis/v1/users/logout/',{},function(){
+                 location.reload();
+                })
+        });
+        });
+</script>
+
+{% endblock %}
